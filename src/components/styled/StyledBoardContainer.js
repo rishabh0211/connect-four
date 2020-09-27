@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../styles/media";
 
 export default styled.section`
   max-width: 70rem;
@@ -14,6 +15,10 @@ export default styled.section`
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
+
+      ${media.tablet`
+        font-size: 3rem;
+      `}
     }
   }
   .bottom-container {
@@ -22,6 +27,7 @@ export default styled.section`
   .legend {
     display: inline-flex;
     flex-direction: column;
+    flex-shrink: 0;
     .legend-attr {
       position: relative;
       font-size: 2rem;
@@ -73,17 +79,26 @@ export const StyledBoard = styled.div`
   margin-top: 15rem;
   margin: 15rem auto 5rem;
 
+  ${media.tablet`
+    margin: 2rem auto;
+  `}
+
   &::before {
-    content: "";
+    content: " ";
     position: absolute;
     height: ${props => `${props.width / 7 - 1}rem`};
     width: ${props => `${props.width / 7 - 1}rem`};
     background: ${props => props.currentPlayer === 1 ? "#F52525" : "yellow"};
-    top: -10rem;
+    top: ${props => `-${props.width / 7}rem`};
     border-radius: 50%;
     left: ${props => `${(props.activeHovered * props.width / 7)}rem`};
     transition: left .3s ease-out, background .2s ease-in-out;
-    display: ${props => props.winner ? "none" : "block"}
+    display: block;
+    ${props => props.winner && { content: "none" }};
+
+    ${media.tablet`
+      content: none;
+    `}
   }
 `;
 
