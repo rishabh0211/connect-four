@@ -24,10 +24,16 @@ const Board = () => {
     setBoard(board);
   };
 
+  /**
+   * toggle the current player
+   */
   const toggleCurrentPlayer = () => {
     return currentPlayer === 1 ? setCurrentPlayer(2) : setCurrentPlayer(1);
   };
 
+  /**
+   * Handles the click event on the cell
+   */
   const handleCellClick = (colIndex) => {
     return () => {
       if (winner) return;
@@ -48,6 +54,9 @@ const Board = () => {
     };
   };
 
+  /**
+   * Checks if there is any winner in the current board state
+   */
   const checkWinner = (rowIndex, colIndex, board) => {
     return checkHorizontal(rowIndex, colIndex, board) ||
       checkVertical(rowIndex, colIndex, board) ||
@@ -55,33 +64,9 @@ const Board = () => {
       checkDiagonalLeft(board);
   };
 
-  // const checkDiagonal = (rowIndex, colIndex, board) => {
-  //   let rowStart = rowIndex;
-  //   let colStart = colIndex;
-  //   for (let i = 3; i >= 0; i--) {
-  //     if (board[rowIndex - i] && board[rowIndex - i][colIndex - i]) {
-  //       rowStart = rowIndex - i;
-  //       colStart = colIndex - i;
-  //       break;
-  //     }
-  //   }
-  //   let winCount = 0;
-  //   while(true) {
-  //     if (!board[rowStart] || !board[rowStart][colStart]) {
-  //       return false;
-  //     }
-  //     if (board[rowStart][colStart] === currentPlayer) {
-  //       winCount++;
-  //       if (winCount === 4) {
-  //         alert("winner");
-  //         return true;
-  //       }
-  //       rowStart++;
-  //       colStart++;
-  //     }
-  //   }
-  // };
-
+  /**
+   * Checks fot the winner in the right diagonal
+   */
   const checkDiagonalRight = (board) => {
     for (let i = 3; i < 6; i++) {
       for (let j = 0; j < 4; j++) {
@@ -97,6 +82,9 @@ const Board = () => {
     return false;
   };
 
+  /**
+   * Checks fot the winner in the right diagonal
+   */
   const checkDiagonalLeft = (board) => {
     for (let i = 3; i < 6; i++) {
       for (let j = 3; j < 7; j++) {
@@ -112,6 +100,9 @@ const Board = () => {
     return false;
   };
 
+  /**
+   * Checks fot the winner in vertically
+   */
   const checkVertical = (rowIndex, colIndex, board) => {
     let rowStart = 0;
     let rowEnd = 5;
@@ -135,6 +126,9 @@ const Board = () => {
     return false;
   };
 
+  /**
+   * Checks fot the winner in horizontallly
+   */
   const checkHorizontal = (rowIndex, colIndex, board) => {
     let colStart = 0;
     let colEnd = 6;
@@ -158,6 +152,9 @@ const Board = () => {
     return false;
   };
 
+  /**
+   * Handles the click on the new game cta
+   */
   const handlePlayNewGame = () => {
     initializeBoard();
     setCurrentPlayer(1);
@@ -169,7 +166,7 @@ const Board = () => {
       <div className="heading-container">
         <h1 className="heading">connect four</h1>
       </div>
-      <StyledBoard currentPlayer={currentPlayer} activeHovered={activeHovered} winner={winner}>
+      <StyledBoard currentPlayer={currentPlayer} activeHovered={activeHovered} winner={winner} >
         {
           board.map((row, rowIndex) => {
             return row.map((col, colIndex) => (
