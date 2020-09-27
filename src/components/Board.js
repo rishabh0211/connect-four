@@ -7,9 +7,11 @@ const Board = () => {
   const [currentPlayer, setCurrentPlayer] = useState(1);
   const [winner, setWinner] = useState(null);
   const [activeHovered, setActiveHovered] = useState(null);
+  const [width, setWidth] = useState(null);
 
   useEffect(() => {
     initializeBoard();
+    calculateWidth();
   }, []);
 
   const initializeBoard = () => {
@@ -22,6 +24,17 @@ const Board = () => {
       board.push(row);
     }
     setBoard(board);
+  };
+
+  /**
+   * calculates and sets the width of the board
+   */
+  const calculateWidth = () => {
+    let width = window.innerWidth/10;
+    if (width > 70) {
+      width = 70;
+    }
+    setWidth(width);
   };
 
   /**
@@ -166,7 +179,7 @@ const Board = () => {
       <div className="heading-container">
         <h1 className="heading">connect four</h1>
       </div>
-      <StyledBoard currentPlayer={currentPlayer} activeHovered={activeHovered} winner={winner} >
+      <StyledBoard currentPlayer={currentPlayer} activeHovered={activeHovered} winner={winner} width={width}>
         {
           board.map((row, rowIndex) => {
             return row.map((col, colIndex) => (

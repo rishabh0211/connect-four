@@ -63,9 +63,8 @@ export default styled.section`
 `;
 
 export const StyledBoard = styled.div`
-  width: 100%;
-  max-width: 70rem;
-  height: 60rem;
+  width: ${props => `${props.width}rem`};
+  height: ${props => `${props.width * 6 / 7}rem`};
   background: #276b8e;
   display: grid;
   grid-template-rows: repeat(6, 1fr);
@@ -77,12 +76,12 @@ export const StyledBoard = styled.div`
   &::before {
     content: "";
     position: absolute;
-    height: 9rem;
-    width: 9rem;
+    height: ${props => `${props.width / 7 - 1}rem`};
+    width: ${props => `${props.width / 7 - 1}rem`};
     background: ${props => props.currentPlayer === 1 ? "#F52525" : "yellow"};
     top: -10rem;
     border-radius: 50%;
-    left: ${props => `${(props.activeHovered * 10)}rem`};
+    left: ${props => `${(props.activeHovered * props.width / 7)}rem`};
     transition: left .3s ease-out, background .2s ease-in-out;
     display: ${props => props.winner ? "none" : "block"}
   }
