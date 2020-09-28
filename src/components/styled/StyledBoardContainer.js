@@ -73,8 +73,8 @@ export const StyledBoard = styled.div`
   height: ${props => `${props.width * 6 / 7}rem`};
   background: #276b8e;
   display: grid;
-  grid-template-rows: repeat(6, 1fr);
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: ${props => `repeat(${props.rows}, 1fr)`};
+  grid-template-columns: ${props => `repeat(${props.cols}, 1fr)`};
   position: relative;
   margin-top: 15rem;
   margin: 15rem auto 5rem;
