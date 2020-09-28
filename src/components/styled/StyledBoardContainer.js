@@ -70,7 +70,7 @@ export default styled.section`
 
 export const StyledBoard = styled.div`
   width: ${props => `${props.width}rem`};
-  height: ${props => `${props.width * 6 / 7}rem`};
+  height: ${props => `${props.width * props.rows / props.cols}rem`};
   background: #276b8e;
   display: grid;
   grid-template-rows: ${props => `repeat(${props.rows}, 1fr)`};
