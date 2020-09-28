@@ -9,6 +9,8 @@ const Board = () => {
   const [activeHovered, setActiveHovered] = useState(null);
   const [width, setWidth] = useState(null);
   const [lastCord, setLastCord] = useState([]);
+  const [rows, setRows] = useState(6);
+  const [cols, setCols] = useState(7);
 
   useEffect(() => {
     initializeBoard();
@@ -17,14 +19,19 @@ const Board = () => {
 
   const initializeBoard = () => {
     let board = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < rows; i++) {
       let row = [];
-      for (let j = 0; j < 7; j++) {
+      for (let j = 0; j < cols; j++) {
         row.push(0);
       }
       board.push(row);
     }
     setBoard(board);
+  };
+
+  const handleGridChange = () => {
+    // setCurrentPlayer(1);
+    initializeBoard();
   };
 
   /**
@@ -192,7 +199,25 @@ const Board = () => {
       <div className="heading-container">
         <h1 className="heading">connect four</h1>
       </div>
-      <StyledBoard currentPlayer={currentPlayer} activeHovered={activeHovered} winner={winner} width={width}>
+      <input
+        type="number"
+        value={rows}
+        onChange={e => setRows(+e.target.value)}
+      />
+      <input
+        type="number"
+        value={cols}
+        onChange={e => setCols(+e.target.value)}
+      />
+      <button className="btn" onClick={handleGridChange}>submit</button>
+      <StyledBoard
+        currentPlayer={currentPlayer}
+        activeHovered={activeHovered}
+        winner={winner}
+        width={width}
+        rows={rows}
+        cols={cols}
+      >
         {
           board.map((row, rowIndex) => {
             return row.map((col, colIndex) => (
