@@ -59,7 +59,7 @@ const Board = () => {
     return () => {
       if (winner) return;
       let clonedBoard = board.slice();
-      for (let i = 5; i >= 0; i--) {
+      for (let i = rows-1; i >= 0; i--) {
         if (!clonedBoard[i][colIndex]) {
           clonedBoard[i][colIndex] = currentPlayer;
           setBoard(clonedBoard);
@@ -127,8 +127,8 @@ const Board = () => {
    */
   const checkVertical = (rowIndex, colIndex, board) => {
     let rowStart = 0;
-    let rowEnd = 5;
-    if (rowIndex + 4 <= 5) {
+    let rowEnd = rows - 1;
+    if (rowIndex + 4 <= rows - 1) {
       rowEnd = rowIndex + 3;
     }
     if (rowIndex - 4 >= 0) {
@@ -153,8 +153,8 @@ const Board = () => {
    */
   const checkHorizontal = (rowIndex, colIndex, board) => {
     let colStart = 0;
-    let colEnd = 6;
-    if (colIndex + 4 < 6) {
+    let colEnd = cols - 1;
+    if (colIndex + 4 < cols - 1) {
       colEnd = colIndex + 3;
     }
     if (colIndex - 4 > 0) {
