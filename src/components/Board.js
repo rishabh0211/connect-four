@@ -8,6 +8,7 @@ const Board = () => {
   const [winner, setWinner] = useState(null);
   const [activeHovered, setActiveHovered] = useState(null);
   const [width, setWidth] = useState(null);
+  const [lastCord, setLastCord] = useState([]);
 
   useEffect(() => {
     initializeBoard();
@@ -30,7 +31,7 @@ const Board = () => {
    * calculates and sets the width of the board
    */
   const calculateWidth = () => {
-    let width = window.innerWidth/10;
+    let width = window.innerWidth / 10;
     if (width > 70) {
       width = 70;
     }
@@ -55,6 +56,7 @@ const Board = () => {
         if (!clonedBoard[i][colIndex]) {
           clonedBoard[i][colIndex] = currentPlayer;
           setBoard(clonedBoard);
+          setLastCord([i, colIndex]);
           let isWinner = checkWinner(i, colIndex, clonedBoard);
           if (isWinner) {
             setWinner(currentPlayer);
@@ -174,6 +176,17 @@ const Board = () => {
     setWinner(null);
   };
 
+  const handleUndoClick = () => {
+    const [row, column] = lastCord;
+    let clonedBoard = board.slice();
+    clonedBoard[row][column] = 0;
+    setLastCord([]);
+    if (!winner) {
+      toggleCurrentPlayer();
+    }
+    setWinner(null);
+  };
+
   return (
     <StyledBoardContainer>
       <div className="heading-container">
@@ -194,6 +207,14 @@ const Board = () => {
           })}
 
       </StyledBoard>
+      {lastCord && !!lastCord.length &&
+        <button
+          className="undo-btn"
+          onClick={handleUndoClick}
+        >
+          Undo
+        </button>
+      }
       <div className="bottom-container">
         <div className="legend">
           <div className="legend-attr legend-red">Player 1</div>
