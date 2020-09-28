@@ -86,12 +86,12 @@ export const StyledBoard = styled.div`
   &::before {
     content: " ";
     position: absolute;
-    height: ${props => `${props.width / 7 - 1}rem`};
-    width: ${props => `${props.width / 7 - 1}rem`};
+    height: ${props => `${props.width / props.cols - 1}rem`};
+    width: ${props => `${props.width / props.cols - 1}rem`};
     background: ${props => props.currentPlayer === 1 ? "#F52525" : "yellow"};
-    top: ${props => `-${props.width / 7}rem`};
+    top: ${props => `-${props.width / props.cols}rem`};
     border-radius: 50%;
-    left: ${props => `${(props.activeHovered * props.width / 7)}rem`};
+    left: ${props => `${(props.activeHovered * props.width / props.cols)}rem`};
     transition: left .3s ease-out, background .2s ease-in-out;
     display: block;
     ${props => props.winner && { content: "none" }};
