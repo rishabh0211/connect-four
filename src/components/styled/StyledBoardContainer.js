@@ -65,7 +65,7 @@ export default styled.section`
   .undo-btn {
     align-self: center;
   }
-  
+
   .legend {
     display: inline-flex;
     flex-direction: column;
@@ -96,8 +96,9 @@ export default styled.section`
     }
   }
   .btn-container {
-    margin-left: 10rem;
-    flex-grow: 1;
+    margin-top: 2.4rem;
+    display: flex;
+    align-items: center;
     .win-msg {
       font-size: 2.4rem;
       text-transform: uppercase;
@@ -107,6 +108,9 @@ export default styled.section`
       background: #276b8e;
       color: #ffffff;
       text-transform: uppercase;
+    }
+    .new-game-btn {
+      margin-left: 2rem;
     }
   }
 `;
@@ -119,8 +123,7 @@ export const StyledBoard = styled.div`
   grid-template-rows: ${props => `repeat(${props.rows}, 1fr)`};
   grid-template-columns: ${props => `repeat(${props.cols}, 1fr)`};
   position: relative;
-  margin-top: 15rem;
-  margin: 15rem auto 5rem;
+  margin: ${props => props.winner ? "2rem auto 5rem" : "15rem auto 5rem"};
 
   ${media.tablet`
     margin: 2rem auto;

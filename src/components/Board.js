@@ -29,9 +29,16 @@ const Board = () => {
     setBoard(board);
   };
 
+  const reset = () => {
+    initializeBoard();
+    setWinner(null);
+    setCurrentPlayer(1);
+    setLastCord([]);
+  };
+
   const handleGridChange = () => {
     // setCurrentPlayer(1);
-    initializeBoard();
+    reset();
   };
 
   /**
@@ -178,10 +185,7 @@ const Board = () => {
    * Handles the click on the new game cta
    */
   const handlePlayNewGame = () => {
-    initializeBoard();
-    setCurrentPlayer(1);
-    setLastCord([]);
-    setWinner(null);
+    reset();
   };
 
   const handleUndoClick = () => {
@@ -227,6 +231,12 @@ const Board = () => {
         </button>
         }
       </div>
+      {winner &&
+        <div className="btn-container">
+          <h3 className="win-msg">Player {winner} is the winner!</h3>
+          <button className="btn new-game-btn" onClick={handlePlayNewGame}>New Game</button>
+        </div>
+      }
       <StyledBoard
         currentPlayer={currentPlayer}
         activeHovered={activeHovered}
@@ -254,12 +264,6 @@ const Board = () => {
           <div className="legend-attr legend-red">Player 1</div>
           <div className="legend-attr legend-yellow">Player 2</div>
         </div>
-        {winner &&
-          <div className="btn-container">
-            <h3 className="win-msg">Player {winner} is the winner!</h3>
-            <button className="btn" onClick={handlePlayNewGame}>New Game</button>
-          </div>
-        }
       </div>
     </StyledBoardContainer>
   )
