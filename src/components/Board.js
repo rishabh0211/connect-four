@@ -59,7 +59,7 @@ const Board = () => {
     return () => {
       if (winner) return;
       let clonedBoard = board.slice();
-      for (let i = rows-1; i >= 0; i--) {
+      for (let i = rows - 1; i >= 0; i--) {
         if (!clonedBoard[i][colIndex]) {
           clonedBoard[i][colIndex] = currentPlayer;
           setBoard(clonedBoard);
@@ -200,17 +200,23 @@ const Board = () => {
       <div className="heading-container">
         <h1 className="heading">connect four</h1>
       </div>
-      <input
-        type="number"
-        value={rows}
-        onChange={e => setRows(+e.target.value)}
-      />
-      <input
-        type="number"
-        value={cols}
-        onChange={e => setCols(+e.target.value)}
-      />
-      <button className="btn" onClick={handleGridChange}>submit</button>
+      <div className="inputs-container">
+        <input
+          type="number"
+          value={rows}
+          min={6}
+          onChange={e => setRows(+e.target.value)}
+          placeholder="Rows"
+        />
+        <input
+          type="number"
+          value={cols}
+          min={7}
+          onChange={e => setCols(+e.target.value)}
+          placeholder="Cols"
+        />
+        <button className="btn" onClick={handleGridChange}>submit</button>
+      </div>
       <StyledBoard
         currentPlayer={currentPlayer}
         activeHovered={activeHovered}

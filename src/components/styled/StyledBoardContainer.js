@@ -21,6 +21,24 @@ export default styled.section`
       `}
     }
   }
+
+  .inputs-container {
+    display: flex;
+    margin-top: 1rem;
+
+    *:not(:first-child) {
+      margin-left: 1rem;
+    }
+
+    input {
+      border: none;
+      border-bottom: solid 1px #276b8e;
+      padding: 1rem;
+      font-size: 1.6rem;
+      width: 8rem;
+    }
+  }
+
   .bottom-container {
     display: flex;
   }
