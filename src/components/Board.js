@@ -180,6 +180,7 @@ const Board = () => {
   const handlePlayNewGame = () => {
     initializeBoard();
     setCurrentPlayer(1);
+    setLastCord([]);
     setWinner(null);
   };
 
