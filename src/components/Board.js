@@ -234,7 +234,7 @@ const Board = () => {
       </StyledBoard>
       {lastCord && !!lastCord.length &&
         <button
-          className="undo-btn"
+          className="btn undo-btn"
           onClick={handleUndoClick}
         >
           Undo

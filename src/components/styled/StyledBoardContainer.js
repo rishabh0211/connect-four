@@ -24,10 +24,25 @@ export default styled.section`
   .bottom-container {
     display: flex;
   }
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    border: #276b8e solid 1px;
+    color: #000;
+    background: #fff;
+    transition: all .3s;
+
+    &:hover {
+      background: #1c6a93ba;
+      color: #ffffff;
+    }
+  }
   .legend {
     display: inline-flex;
     flex-direction: column;
     flex-shrink: 0;
+    margin-top: 1rem;
     .legend-attr {
       position: relative;
       font-size: 2rem;
