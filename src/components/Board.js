@@ -200,22 +200,32 @@ const Board = () => {
       <div className="heading-container">
         <h1 className="heading">connect four</h1>
       </div>
-      <div className="inputs-container">
-        <input
-          type="number"
-          value={rows}
-          min={6}
-          onChange={e => setRows(+e.target.value)}
-          placeholder="Rows"
-        />
-        <input
-          type="number"
-          value={cols}
-          min={7}
-          onChange={e => setCols(+e.target.value)}
-          placeholder="Cols"
-        />
-        <button className="btn" onClick={handleGridChange}>submit</button>
+      <div className="input-undo-container">
+        <div className="inputs-container">
+          <input
+            type="number"
+            value={rows}
+            min={6}
+            onChange={e => setRows(+e.target.value)}
+            placeholder="Rows"
+          />
+          <input
+            type="number"
+            value={cols}
+            min={7}
+            onChange={e => setCols(+e.target.value)}
+            placeholder="Cols"
+          />
+          <button className="btn" onClick={handleGridChange}>submit</button>
+        </div>
+        {lastCord && !!lastCord.length &&
+          <button
+            className="btn undo-btn"
+            onClick={handleUndoClick}
+          >
+            Undo
+        </button>
+        }
       </div>
       <StyledBoard
         currentPlayer={currentPlayer}
@@ -239,14 +249,6 @@ const Board = () => {
           })}
 
       </StyledBoard>
-      {lastCord && !!lastCord.length &&
-        <button
-          className="btn undo-btn"
-          onClick={handleUndoClick}
-        >
-          Undo
-        </button>
-      }
       <div className="bottom-container">
         <div className="legend">
           <div className="legend-attr legend-red">Player 1</div>

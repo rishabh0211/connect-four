@@ -22,6 +22,11 @@ export default styled.section`
     }
   }
 
+  .input-undo-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .inputs-container {
     display: flex;
     margin-top: 1rem;
@@ -56,6 +61,11 @@ export default styled.section`
       color: #ffffff;
     }
   }
+
+  .undo-btn {
+    align-self: center;
+  }
+  
   .legend {
     display: inline-flex;
     flex-direction: column;
