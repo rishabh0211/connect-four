@@ -259,11 +259,9 @@ const Board = () => {
           })}
 
       </StyledBoard>
-      <div className="bottom-container">
-        <div className="legend">
-          <div className="legend-attr legend-red">Player 1</div>
-          <div className="legend-attr legend-yellow">Player 2</div>
-        </div>
+      <div className="legend">
+        <div className="legend-attr legend-red">Player 1</div>
+        <div className="legend-attr legend-yellow">Player 2</div>
       </div>
     </StyledBoardContainer>
   )

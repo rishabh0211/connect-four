@@ -25,11 +25,11 @@ export default styled.section`
   .input-undo-container {
     display: flex;
     justify-content: space-between;
+    margin-top: 1rem;
   }
 
   .inputs-container {
     display: flex;
-    margin-top: 1rem;
 
     *:not(:first-child) {
       margin-left: 1rem;
@@ -42,10 +42,6 @@ export default styled.section`
       font-size: 1.6rem;
       width: 8rem;
     }
-  }
-
-  .bottom-container {
-    display: flex;
   }
   .btn {
     padding: 1rem 2rem;
@@ -67,10 +63,9 @@ export default styled.section`
   }
 
   .legend {
-    display: inline-flex;
-    flex-direction: column;
-    flex-shrink: 0;
+    display: flex;
     margin-top: 1rem;
+    justify-content: center;
     .legend-attr {
       position: relative;
       font-size: 2rem;
@@ -88,7 +83,7 @@ export default styled.section`
         }
       }
       &.legend-yellow {
-        margin-top: 1rem;
+        margin-left: 8rem;
         &::after {
           background: yellow;
         }
@@ -101,7 +96,6 @@ export default styled.section`
     align-items: center;
     .win-msg {
       font-size: 2.4rem;
-      text-transform: uppercase;
     }
     .btn {
       padding: 1rem 2rem;
