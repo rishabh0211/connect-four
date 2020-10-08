@@ -28,8 +28,13 @@ export default styled.section`
     margin-top: 1rem;
   }
 
+  .dimension-text {
+    font-size: 1.8rem;
+  }
+
   .inputs-container {
     display: flex;
+    margin-top: 2rem;
 
     *:not(:first-child) {
       margin-left: 1rem;
